@@ -65,11 +65,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func holdButtonTapped(_ sender: UIButton) {
-        let nextCard = game.drawCard()
-        let newTotal = game.playerTotal
+        let nextCard = game.deck.last ?? 0
+        let newTotal = game.playerTotal + nextCard
         
         if newTotal > 21 {
-            messageLabel.text = "You win! The next card (\(nextCard)) would have made you bust."
+            messageLabel.text = "Win! Good call on holding, next card was going to be \(nextCard)."
         } else {
             messageLabel.text = "You lose! The next card (\(nextCard)) made a total of \(newTotal)."
         }
